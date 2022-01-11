@@ -4,21 +4,21 @@ const authorText = document.getElementById('author');
 const twitterBtn = document.getElementById('twitter');
 const newQuoteBtn = document.getElementById('new-quote');
 const loader = document.getElementById('loader');
-​
+
 let apiQuotes = [];
-​
+
 // Loading Spinner Shown
 function loading() {
   loader.hidden = false;
   quoteContainer.hidden = true;
 }
-​
+
 // Remove Loading Spinner
 function complete() {
   quoteContainer.hidden = false;
   loader.hidden = true;
 }
-​
+
 // Show New Quote
 function newQuote() {
   loading();
@@ -40,7 +40,7 @@ function newQuote() {
   quoteText.textContent = quote.text;
   complete();
 }
-​
+
 // Get Quotes From API
 async function getQuotes() {
   loading();
@@ -53,16 +53,16 @@ async function getQuotes() {
     // Catch Error Here
   }
 }
-​
+
 // Tweet Quote
 function tweetQuote() {
   const twitterUrl = `https://twitter.com/intent/tweet?text=${quoteText.innerText} - ${authorText.innerText}`;
   window.open(twitterUrl, '_blank');
 }
-​
+
 // Event Listeners
 newQuoteBtn.addEventListener('click', newQuote);
 twitterBtn.addEventListener('click', tweetQuote);
-​
+
 // On Load
 getQuotes();
